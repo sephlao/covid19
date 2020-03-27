@@ -3,12 +3,11 @@ import Header from "./components/Header";
 import Search from "./components/Search";
 import Card from "./components/Card";
 import { useFetch } from "./utils/customHooks";
-import WashHands from './img/01.svg';
-import CoverMouth from './img/02.svg';
-import Isolate from './img/03.svg';
-import AvoidContact from './img/04.svg';
-
-
+import { Animation} from './components/Animation'
+import CoverMouth from './animation/covermouth.json';
+import WashHands from './animation/washhands.json';
+import Isolate from './animation/isolate.json'
+import AvoidContact from './animation/avoidcontact.json'
 
 function App() {
   const [country, setCountry] = useState("");
@@ -17,6 +16,7 @@ function App() {
     ? "https://covid19.mathdro.id/api"
     : "https://covid19.mathdro.id/api/countries/" + parsedCountry.iso;
   const [data] = useFetch(url);
+
 
   return (
     <>
@@ -30,20 +30,21 @@ function App() {
 
         {/* todo create info card component */}
         <div className="card info">
-          <img src={AvoidContact} alt="avoid contact"/>
+        <Animation name="avoidcontact" data={AvoidContact} />
           <p>Avoid close contact (1 meter or 3 feet) with people who are unwell</p>
         </div>
         <div className="card info">
-          <img src={WashHands} alt="wash hands"/>
+          <Animation name="washhands" data={WashHands} />
           <p>Wash your hands regularly for 20 seconds, with soap and water or alcohol-based hand rub</p>
         </div>
         <div className="card info">
-          <img src={CoverMouth} alt="cover mouth"/>
-          <p>Cover your nose and mouth with a disposable tissue or flexed elbow when you cough or sneeze</p>
+          <Animation name="isolate" data={Isolate} />
+          <p>Stay home and self-isolate from others in the household if you feel unwell</p>
         </div>
         <div className="card info">
-          <img src={Isolate} alt="cover mouth"/>
-          <p>Stay home and self-isolate from others in the household if you feel unwell</p>
+          {/* <img src={CoverMouth} alt="cover mouth"/> */}
+          <Animation name="covermouth" data={CoverMouth} />
+          <p>Cover your nose and mouth with a disposable tissue or flexed elbow when you cough or sneeze</p>
         </div>
       </main>
     </>

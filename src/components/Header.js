@@ -1,6 +1,11 @@
-import React from "react";
-import { Virus, Moon } from "./Icon";
+import React, { useState } from "react";
+import { Virus, Moon, Sun } from "./Icon";
+
 const Header = () => {
+  const [theme, setTheme] = useState("light");
+  document.body.className = theme;
+  document.querySelector("meta[name=theme-color]")
+  .setAttribute('content', theme === 'dark' ? '#27253B': '#fbfbfb');
   return (
     <header className="header">
       <ul>
@@ -13,8 +18,11 @@ const Header = () => {
           <h1 className="title">Covid-19</h1>
         </li>
         <li>
-          <button className="btn svg">
-            <Moon />
+          <button
+            className="btn svg"
+            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+          >
+            {theme === "light" ? <Moon /> : <Sun />}
           </button>
         </li>
       </ul>

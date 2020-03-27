@@ -10,6 +10,18 @@
   --confirmed: #f9d864;
   --recovered: #64ffc7;
   --deaths: #ff6496;
+
+  --bg-animation: #ffffff;
+  --br-animation: 0;
+}
+
+.dark {
+  --txt-primary: #fbfbfb;
+  --bg-primary: #27253b;
+  --bg-secondary: #3b3858;
+
+  --bg-animation: #aca9bb;
+  --br-animation: 50%;
 }
 
 body {
@@ -21,6 +33,13 @@ body {
   color: var(--txt-primary);
   box-sizing: border-box;
   font-size: 14px;
+  transition: background 300ms ease-in, color 325ms ease-in;
+}
+
+input,
+select,
+button {
+  outline: none;
 }
 
 #root {
@@ -43,6 +62,7 @@ body {
   font-size: 2em;
   font-weight: bold;
   font-family: "Righteous", cursive;
+  color: #64e5f9;
 }
 
 .btn.svg {
@@ -59,15 +79,15 @@ body {
 .searchbar .input {
   width: 100%;
   box-sizing: border-box;
-  padding: 0.75em 1.5em;
+  padding: 0.75em 1em;
   margin: 1.5em 0;
   border: 1px solid var(--txt-secondary);
   border-radius: 2em;
-  outline: none;
   font-size: 1.143em;
   -webkit-appearance: none;
   -moz-appearance: none;
   background: none;
+  color: var(--txt-primary);
 }
 
 .card {
@@ -123,7 +143,7 @@ body {
 .counts {
   display: grid;
   grid-template-columns: 1fr 1fr 2em;
-  margin-top: .75em;
+  margin-top: 0.75em;
   align-items: center;
   font-size: 1.14em;
 }
@@ -139,7 +159,7 @@ body {
 
 .legend .count {
   justify-self: right;
-  padding: 0 .5em;
+  padding: 0 0.5em;
 }
 
 .status {
@@ -153,8 +173,21 @@ body {
 
 .card.info {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-items: center;
+  grid-template-columns: minmax(auto, 12em) 1fr;
+  justify-items: start;
   align-items: center;
   margin: 1.5em 0;
+  color: var(--txt-primary);
+}
+
+.card.info > div {
+  max-width: 12rem;
+  background-color: var(--bg-animation);
+  border-radius: var(--br-animation);
+  transition: border-radius 300ms ease;
+}
+
+.card.info > p {
+  font-size: 1.2em;
+  margin-left: 1em;
 }
