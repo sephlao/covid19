@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import Header from "./components/Header";
+import Search from "./components/Search";
+import Card from "./components/Card";
+import { useFetch } from "./utils/customHooks";
 
 function App() {
+  const [country, setCountry] = useState("");
+  let parsedCountry = country ? JSON.parse(country) : {iso: '', name: ''};
+  const url = !parsedCountry.iso
+    ? "https://covid19.mathdro.id/api"
+    : "https://covid19.mathdro.id/api/countries/" + parsedCountry.iso;
+  const [data] = useFetch(url);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <main className="main section">
+        <Search selectCountry={setCountry} />
+        <Card country={parsedCountry} data={data} />
+      </main>
+    </>
   );
 }
 
