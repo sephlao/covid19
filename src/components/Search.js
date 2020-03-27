@@ -15,8 +15,8 @@ const Search = ({ selectCountry }) => {
         onChange={e => selectCountry(e.target.value)}
       >
         <option key="default" value="">Select a country</option>
-        {Object.values(data.countries).map(({iso2, name}, i) => {
-            return <option key={i} value={JSON.stringify({iso: iso2, name})}>{name}</option>
+        {Object.values(data.countries).map(({iso2, iso3, name}) => {
+            if(iso2) return <option key={iso3} value={JSON.stringify({iso: iso2, name})}>{name}</option>
         })}
       </select>
     </div>
