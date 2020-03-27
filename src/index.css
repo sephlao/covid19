@@ -144,3 +144,16 @@ body {
 .status {
   margin: 1em;
 }
+
+.notice {
+  margin: 2em 0;
+  font-style: italic;
+}
+
+.card.info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  margin: 1.5em 0;
+}
