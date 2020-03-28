@@ -19,7 +19,7 @@ const Legend = ({ name, value }) => {
   return (
     <div className="counts">
       <p className="label">{name}</p>
-      <p className="count">{value}</p>
+      <p className="count">{value.toLocaleString()}</p>
       <span className={"stat " + name}></span>
     </div>
   );
