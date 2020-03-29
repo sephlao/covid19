@@ -1,7 +1,6 @@
 import React from "react";
 
 const BarStats = ({ confirmed, recovered, deaths }) => {
-  console.log(confirmed, recovered, deaths);
   const r = ((recovered / confirmed) * 100);
   const d = ((deaths/confirmed) *100);
   return (
