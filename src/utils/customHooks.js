@@ -9,13 +9,13 @@ export const useFetch = url => {
     (async () => {
       try {
         setLoading(true);
-      const data = await fetch(url)
-        .then(data => data.json())
-        .catch(error => setError(error))
-        .finally(() => setLoading(false));
-      setData(data);
-      } catch(e) {
-        console.error(e)
+        const response = await fetch(url);
+        const data = await response.json();
+        setData(data);
+      } catch (e) {
+        setError(e);
+      } finally {
+        setLoading(false);
       }
     })();
   }, [url]);
